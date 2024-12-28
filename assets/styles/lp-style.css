@@ -1,0 +1,484 @@
+@charset "UTF-8";
+
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 1.0.1      |
+  |  © 2021-2024 By PusyuuWanko/  |
+  |  LastUpdate: 2024-08-06       |
+  |  License: Apache-2.0 license      |
+  |  PIPS of LP...                |
+----------------------------------*
+******************************************/
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0:
+}
+
+show {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+show > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  filter: blur(10px);
+}
+show > div {
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+  top: 10%;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #333;
+  overflow: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 10px;
+  background: #222;
+  height: 75px;
+  width: auto;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+header > h1 {
+  width: 100px;
+  height: 50px;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+header > h1 > img {
+  width: 100%;
+  height: 100%;
+}
+
+nav > ul {
+  display: flex;
+  margin: 0;
+}
+nav > ul > li {
+  list-style: none;
+  margin: 5px;
+}
+nav > ul > li > a {
+  color: #00ff00;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.5s;
+}
+nav > ul > li > a::before,
+nav > ul > li > a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  transition: all 0.5s;
+  bottom: -5px;
+}
+nav > ul > li > a::before {
+  right: 50%;
+  background: #00aa00;
+}
+nav > ul > li > a::after {
+  left: 50%;
+  background: #00ee00;
+}
+nav > ul > li > a:hover::before {
+  content: "";
+  width: 50%;
+}
+nav > ul > li > a:hover::after {
+  content: "";
+  width: 50%;
+}
+
+main {
+  padding: 10px 20px 10px;
+}
+main a {
+  color: #44ee00;
+  text-decoration: none;
+}
+main a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+  background: #000;
+  color: #00ff00;
+}
+
+section {
+  padding: 70px 20px 0px 20px;
+}
+
+.q_and_a {
+
+}
+.q_and_a > li {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0px 15px;
+}
+.q_and_a > li > strong::before {
+  content: "Q";
+  padding: 0px 10px 0px;
+  color: #ff0000;
+}
+.q_and_a > li > span::before {
+  content: "A ";
+  padding: 0px 10px 0px;
+  color: #00ff00;
+}
+
+.future_button {
+  width: 50vw;
+  height: 30vh;
+  border: 1px solid #000;
+  background: linear-gradient(to bottom right, #00ff00, #00aaff);
+  transition: all 0.3s;
+  border-radius: center;
+  padding: 10px;
+}
+.future_button:hover {
+  width: 52vw;
+  height: 32vh;
+  display: flex;
+  background: linear-gradient(to bottom right, #00aa00, #00aacc);
+}
+.future_button > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-size: 40px;
+  text-decoration: none;
+}
+.future_button > a:hover {
+  text-decoration: none;
+  color: #eee;
+}
+
+.futures {
+  
+}
+.futures video,
+.futures img {
+  width: 60%;
+  height: auto;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* モーダル設定
+---------------------------------------------*/
+
+.modal {
+  display: none;
+  z-index: 666;
+}
+.modal:target {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal > div {
+  animation: modal-show 0.3s linear 0s;
+  --modal_width: 60vw;
+  --modal_
+  --modal_position: relative;
+}
+@keyframes modal-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal > div > a {
+  position: relative;
+  display: block;
+}
+.modal > div > a::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  background-color: rgba(0,0,0,0.4);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.modal > div > a::after {
+  content: "✕";
+  color: white;
+  position: absolute;
+  right: -13px;
+  top: -13px;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  border-radius: 50px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.modal > div > div {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px -1px 1px #aaa;
+}
+.modal > div > div > span {
+  position: var(--modal_position);
+  width: var(--modal_width);
+  min-height: 20px;
+  font-size: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #00ccff;
+  color: #00ccff;
+  word-break: break-all;
+  background: rgba(0,255,100,0.5);
+}
+.modal > div > div > div {
+  position: var(--modal_position);
+  width: var(--modal_width);
+  height: 50vh;
+  border-radius: 0px;
+  overflow: hidden;
+  cursor: default;
+  padding: 15px;
+  overflow: auto;
+  color: #fff;
+}
+
+/* フォーム調整部
+-----------------------------------------------------------------*/
+
+.form_design-1 {
+  border: 1px solid #000;
+  padding: 10px;
+  width: 90%;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.form_design-1 > form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.form_design-1 > form > label {
+  padding: 3px;
+  border-left: 3px solid #ccc;
+  border-right: 3px solid #ccc;
+  background-color: rgba(0,0,0,0.3);
+}
+.form_design-1 > form > textarea,
+.form_design-1 > form > input,
+.form_design-1 > form > select,
+.form_design-1 > form > button {
+  resize: vertical;
+  border-radius: 0;
+  border-width: 0;
+  border: 1px solid #000;
+  background: #fff;
+  margin: 5px;
+  padding: 3px;
+}
+.form_design-1 > form > textarea {
+  resize: vertical;
+  height: 150px;
+}
+.form_design-1 > form > button {
+  background: #00ccff;
+  transition: all 0.3s;
+}
+.form_design-1 > form > button:hover {
+  background: #00aaff;
+  box-shadow: 0px 0px 0px #000;
+}
+
+@media only screen and (max-width: 600px) {
+
+  /* sm tb版 CSSだけでモーダル型ハンバーガーメニュー調整部
+  -----------------------------------------------------------------*/
+
+  .modal_menu-btn::before {
+    content: "🍔";
+    z-index: 50;
+  }
+
+  .modal_menu-btn::before,
+  #modal_ham_nav > div > a::after {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    width: 45px;
+    height: 45px;
+    border-radius: 3px;
+    background-color: #00ccff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    animation: h-show 0.2s linear;
+  }
+  
+  #modal_ham_nav {
+    display: none;
+  }
+
+  #modal_ham_nav:target {
+    width: 100%;
+    height: 100%;
+    position: absolute; 
+    top: 50vh;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #modal_ham_nav > div {
+    z-index: 250;
+    position: relative;
+  }
+
+  #modal_ham_nav > div > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,150,255,0.5);
+    -webkit-backdrop-filter: var(10px);
+    backdrop-filter: var(10px);
+    cursor: default;
+    width: 80vw;
+    height: 70vh;
+    height: 70dvh;
+    border: 1px solid #00ccff;
+    border-radius: 0;
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    animation: h-show 0.3s linear 0s;
+    z-index: 201;
+  }
+ #modal_ham_nav > div > div::before {
+   content: "メニュー";
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 10px;
+   border-radius: 0px 0px 30px 0px;
+   background-color: #00ff00;
+  }
+
+  @keyframes h-show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  #modal_ham_nav > div > div > nav {
+    width: 100%;
+  }
+
+  #modal_ham_nav > div > div > nav > ul {
+    display: block;
+    padding-left: 0;
+  }
+
+  #modal_ham_nav > div > div > nav > ul > li {
+    min-width: 20px;
+  }
+
+  #modal_ham_nav > div > div > nav > ul > li > a {
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  #modal_ham_nav > div > a {
+    position: absolute;
+    display: block;
+  }
+
+  #modal_ham_nav > div > a::before {
+    content: "";
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    width: 100dvw;
+    height: 100vh;
+    height: 100dvh;
+    cursor: default;
+    transition: all 1s ease-in-out;
+    z-index: 200;
+  }
+  #modal_ham_nav > div > a::after {
+    content: "❌";
+    z-index: 260;
+  }
+}

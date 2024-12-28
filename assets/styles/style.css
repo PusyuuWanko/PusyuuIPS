@@ -1,0 +1,750 @@
+@charset "UTF-8";
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 4.20.0     |
+  |  © 2021-2024 By PusyuuWanko/  |
+  |  LastUpdate: 2024-12-25       |
+  |  License: Apache-2.0 license       |
+  |  PusyuuIPS....                |
+----------------------------------*
+******************************************/
+
+/* 装飾等設定
+---------------------------------------------*/
+
+.image_iconsize {
+  width: 35px;
+  height: 35px;
+}
+
+button,
+.button {
+  border-width: 0;
+  background: #00ff00;
+  box-shadow: 5px 5px #000;
+  transition: all 0.2s;
+  border-radius: 3px;
+  padding: 3px;
+  color: #000;
+  font-size: 13px;
+  text-decoration: none;
+}
+button:hover,
+.button:hover {
+  background: #00cc00;
+  box-shadow: 0px 0px;
+  color: #000;
+  text-decoration: none;
+}
+button:active,
+.button:active {
+  background: #00aa00;
+  box-shadow: inset 1px 1px #000;
+  color: #FFF;
+  text-decoration: none;
+}
+.button:visited {
+  color: #000;
+}
+
+.action_msg {
+  padding: 10px;
+  color: #00ff00;
+  text-shadow: 1px 2px #000;
+}
+
+@keyframes expand {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes border_anime {
+  0% {
+    border: 1px solid #003300;
+  }
+  20% {
+    border: 1px solid #00aa00;
+  }
+  40% {
+    border: 1px solid #00cc00;
+  }
+  60% {
+    border: 1px solid #00ff00;
+  }
+  80% {
+    border: 1px solid #00aaff;
+  }
+  100% {
+    border: 1px solid #00ccff;
+  }
+}
+
+.bbs_content {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.bbs_content > .one_post {
+  width: 100%;
+  margin: 10px;
+  border-radius: 10px;
+  border: var(--page_base_border);
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: var(--page_base_yessbgcolor);
+}
+.bbs_content > .one_post > .title {
+  border-bottom: 1px solid #aaa;
+  background-color: var(--page_base_nosbgcolor);
+  padding: 10px;
+  word-break: break-all;
+  text-shadow: 1px 1px 1px #00ff00;
+}
+.bbs_content > .one_post > .content {
+  padding: 15px;
+  word-break: break-all;
+}
+.bbs_content > .one_post > .content > .media {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+}
+.bbs_content > .one_post > .content > .media > video,
+.bbs_content > .one_post > .content > .media > img {
+  margin: 5px 0px 5px;
+  border-radius: 5px;
+  border: 2px solid #777;
+}
+.bbs_content > .one_post > .buttons {
+  background-color: rgba(100,255,100,0.5);
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.bbs_content > .one_post > .buttons::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0,0,0,0.5);
+}
+.bbs_content > .one_post > .buttons::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+}
+.bbs_content > .one_post > .buttons > form > button {
+  background: #00ff00;
+  color: #000;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50px;
+  border-width: 0;
+  margin: 10px;
+  box-shadow: 2px 2px #000;
+  transition: all 0s;
+}
+.bbs_content > .one_post > .buttons > form > button > span {
+  margin: 3px;
+}
+.bbs_content > .one_post > .buttons > form > button:hover {
+  background: #00cc00;
+  box-shadow: 0px 0px;
+}
+.bbs_content > .one_post > .buttons > form > button:active {
+  background: #00cc00;
+  box-shadow: inset 1px 1px #000;
+}
+.bbs_content > .one_post > .buttons > form > button:disabled {
+  background: #ccffcc;
+  box-shadow: 0px 0px;
+  color: #ccc;
+  cursor: not-allowed;
+}
+.bbs_content > .post {
+  position: relative;
+  width: 18vw;
+  height: 300px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: var(--page_base_yessbgcolor);
+  border: var(--page_base_border);
+  animation: border_anime 3s infinite;
+  border-radius: 10px;
+  margin: 5px;
+  overflow: hidden;
+}
+.bbs_content > .post > .wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 84%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transform: scale(0.1);
+  animation: expand 2s ease forwards;
+}
+.bbs_content > .post > .wrre {
+  overflow-y: auto;
+}
+.bbs_content > .post > .wrapper > .title {
+  border-bottom: 1px solid #aaa;
+  padding: 5px;
+  background-color: var(--page_base_nosbgcolor);
+  word-break: break-all;
+  text-shadow: 1px 1px 1px #00ff00;
+}
+.bbs_content > .post > .wrapper > .content {
+  padding: 10px;
+  word-break: break-all;
+}
+.bbs_content > .post > .wrapper > .content > .media {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+}
+.bbs_content > .post > .wrapper > .content > .media > video,
+.bbs_content > .post > .wrapper > .content > .media > img {
+  margin: 5px 0px 5px;
+  border-radius: 3px;
+  border: 2px solid #777;
+}
+.bbs_content > .post > .buttons {
+  background-color: rgba(100,255,100,0.5);
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  position: absolute;
+  overflow-y: hidden;
+  overflow-x: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.bbs_content > .post > .buttons::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0,0,0,0.5);
+}
+.bbs_content > .post > .buttons::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+}
+.bbs_content > .post > .buttons > form > button {
+  background: #00ff00;
+  color: #000;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50px;
+  border-width: 0;
+  margin: 10px;
+  box-shadow: 2px 2px #000;
+  transition: all 0s;
+}
+.bbs_content > .post > .buttons > form > button > span {
+  margin: 3px;
+}
+.bbs_content > .post > .buttons > form > button:hover {
+  background: #00cc00;
+  box-shadow: 0px 0px;
+}
+.bbs_content > .post > .buttons > form > button:active {
+  background: #00aa00;
+  box-shadow: inset 1px 1px #000;
+}
+.bbs_content > .post > .buttons > form > button:disabled {
+  background: #ccffcc;
+  box-shadow: 0px 0px;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+#likeList {
+  width: 100%;
+  overflow-y: auto;
+}
+
+#loading > div > div > div > div {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+#loading > div > div > div > div > span {
+  margin: 0 20px 0;
+}
+#loading > div > div > div > div > span::after {
+  animation: dotAnime infinite 1.5s;
+  content: "🐸";
+}
+#loading > div > div > div > div > i {
+  font-size: 50px;
+  animation: rote infinite 0.8s;
+}
+@keyframes rote {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dotAnime {
+  0% {
+    content: "";
+  } 20% {
+    content: "🐸";
+  } 40% {
+    content: "🐸🐸";
+  } 60% {
+    content: "🐸🐸🐸";
+  } 80% {
+    content: ''🐸🐸";
+  } 100% {
+    content: "🐸";
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: rgb(252,255,252);
+    color: #111;
+  }
+  h1 {
+    color: #005dff;
+  }
+  h2 {
+    background: -webkit-linear-gradient(left, #008cff, #00ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2:after {
+    content: "";
+    display: block;
+    width: 100%; height: 2px;
+    background-image: -webkit-linear-gradient(left, #008cff, #00ff00);
+    background-image: -ms-linear-gradient(left, #008cff, #00ff00);
+  }
+  h3 {
+   color: #0327cf;
+  }
+  h4 {
+    color: #1362ff;
+  }
+  h5 {
+    color: #035294;
+  }
+  strong {
+    color: #0700ac;
+  }
+  a {
+    color: #1f77ff;
+  }
+  a:hover {
+    color: #096709;
+    text-decoration: underline;
+  }
+  a:visited {
+    color: #1ba8c8;
+  }
+  summary {
+    color: #019156;
+  }
+  summary:active {
+    color: #00aacc;
+  }
+  smoll {
+    color: #424242;
+  }
+  nav > ul > li > a {
+    color: #111;
+  }
+  nav > ul > li > a:hover {
+    color: #00ff00;
+    border: 1px solid #00ff00;
+  }
+  #loading {
+    background: #ffffff;
+  }
+  .header {
+    background-color: rgba(255,255,255,0.9);
+  }
+  .footer {
+    background-color: #ffffff;
+  }
+  :root {
+    --page_base_yessbgcolor: rgba(255,255,255,0.5); 
+    --page_base_nosbgcolor: rgb(255,255,255); 
+    --page_base_border: 0.5px solid #333333;
+    --page_base_dcolor: color: #111;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000000;
+    color: #fff;
+  }
+  h1 {
+    color: #00ff7f;
+  }
+  h2 {
+    background: -webkit-linear-gradient(left, #00ffff, #00ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2:after {
+    content: "";
+    display: block;
+    width: 100%; height: 2px;
+    background-image: -webkit-linear-gradient(left, #00ffff, #00ff00);
+    background-image: -ms-linear-gradient(left, #00ffff, #00ff00);
+  }
+  h3 {
+   color: #80ff00;
+  }
+  h4 {
+    color: #6699ff;
+  }
+  h5 {
+    color: #41e0e0;
+  }
+  strong {
+    color: #d5ff00;
+  }
+  a {
+    color: #00d5ff;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #0ae10a;
+    text-decoration: underline;
+  }
+  a:visited {
+    color: #00ffb7;
+  }
+  summary {
+    color: #02d780;
+  }
+  summary:active {
+    color: #00aacc;
+  }
+  smoll {
+    color: #ccc;
+  }
+  nav > ul > li > a {
+    color: #fff;
+  }
+  nav > ul > li > a:hover {
+    color: #00ff00;
+    border: 1px solid #00ff00;
+  }
+  #loading {
+    background: #000000;
+  }
+  .header {
+    background-color: rgba(0,0,0,0.9);
+  }
+  .footer {
+    background-color: #000000;
+  }
+  :root {
+    --page_base_yessbgcolor: rgba(0,0,0,0.1);
+    --page_base_nosbgcolor: rgb(0,0,0);
+    --page_base_border: 0.5px solid #FFFFFF;
+    --page_base_dcolor: color: #fff;
+  }
+}
+
+/* ヘッダー設定
+---------------------------------------------*/
+
+.header {
+  background-color: var(--page_base_nosbgcolor);
+  padding: 10px;
+  width: 60%;
+  border-radius: 0px 20px 20px 0px;
+  border: var(--page_base_border); 
+  border-left: 0px solid;
+  margin: 25px 0px 10px;
+}
+.header > h1,
+.header > p,
+.header > p > span {
+  word-break: break-all;
+}
+.header > h1 {
+  margin: 0;
+}
+.header > p {
+  color: #00aaff;
+}
+.header > p > span {
+  color: #ff8800;
+}
+
+/* メイン設定
+---------------------------------------------*/
+
+.main {
+  display: block;
+  min-height: 70vh;
+}
+
+/* フッター設定
+---------------------------------------------*/
+
+.footer {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-top: var(--page_base_border);
+}
+.footer > div {
+  width: 300px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  
+  word-break: break-all;
+}
+.footer > div > li {
+  list-style: none;
+}
+
+/* フォーム設定
+-----------------------------------------------------------------*/
+
+.form_style-1 {
+  padding: 10px;
+}
+.form_style-1 > form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.form_style-1 > form > label {
+  padding: 3px;
+  border-left: 3px solid #ccc;
+  border-right: 3px solid #ccc;
+  background-color: var(--page_base_yessbgcolor);
+}
+.form_style-1 > form > textarea,
+.form_style-1 > form > input,
+.form_style-1 > form > select,
+.form_style-1 > form > button {
+  border-radius: 0;
+  border-width: 0;
+  border: var(--page_base_border);
+  background: #fff;
+  color: #000;
+  margin: 5px;
+  padding: 3px;
+}
+.form_style-1 > form > textarea {
+  resize: vertical;
+  height: 150px;
+}
+.form_style-1 > form > button {
+  background: #00ccff;
+  transition: all 0.3s;
+}
+.form_style-1 > form > button:hover {
+  background: #00aaff;
+  box-shadow: 0px 0px 0px #000;
+}
+
+/* ボタン設定
+---------------------------------------------*/
+
+.bottom-right_button,
+.bottom-left_button,
+.top-left_button,
+.top-right_button {
+  position: fixed;
+  width: 100px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(10,255,10,0.7);
+  border-radius: 50px;
+  padding: 10px;
+  z-index: 1;
+}
+.bottom-right_button {
+  bottom: 10px;
+  right: 10px;
+}
+.bottom-left_button {
+  bottom: 10px;
+  left: 10px;
+}
+.top-left_button {
+  top: 10px;
+  left: 10px;
+}
+.top-right_button {
+  top: 10px;
+  right: 10px;
+}
+
+/* モーダル設定
+---------------------------------------------*/
+
+.modal {
+  display: none;
+  z-index: 666;
+}
+.modal:target {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal > div > a {
+  position: relative;
+  display: block;
+}
+.modal > div > a::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px;);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.modal > div > a::after {
+  content: "✕";
+  color: white;
+  position: absolute;
+  right: -13px;
+  top: -13px;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  border-radius: 50px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.modal > div  > div {
+  animation: modal-show 0.3s linear 0s;
+  background-color: #494;
+  box-shadow: 2px 5px 5px #0f0;
+  border-radius: 15px;
+  overflow: hidden;
+  --modal_width: 65vw;
+  --modal_
+  --modal_position: relative;
+}
+@keyframes modal-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal > div > div > span {
+  position: var(--modal_position);
+  width: var(--modal_width);
+  min-height: 20px;
+  font-size: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #00ccff;
+  color: #00ccff;
+  word-break: break-all;
+}
+.modal > div > div > div {
+  position: var(--modal_position);
+  width: var(--modal_width);
+  height: 50vh;
+  border-radius: 0px;
+  overflow: hidden;
+  cursor: default;
+  padding: 15px;
+  overflow: auto;
+  color: #FFF;
+}
+
+/* sm tb設定
+---------------------------------------------*/
+
+@media screen and ( max-width:950px ) {
+  .bbs_content > .post {
+    width: 37vw;
+    position: sticky;
+    top: 5%;
+  }
+  .top-left_button,.top-right_button,.bottom-left_button,.bottom-right_button {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}
+
+/* sm設定
+---------------------------------------------*/
+
+@media screen and ( max-width:650px ) {
+  .bbs_content > .post {
+    width: 80vw;
+  }
+  
+  /* sm ヘッダー設定
+  ---------------------------------------------*/
+
+  .main {
+
+  }
+  
+  /* sm メイン設定
+  ---------------------------------------------*/
+
+  .header {
+    width: auto;
+    border-radius: 0px;
+    border-right: 0px solid;
+  }
+  
+  /* sm フッター設定
+  ---------------------------------------------*/
+
+  .footer > div {
+    width: 90%;
+  }
+}

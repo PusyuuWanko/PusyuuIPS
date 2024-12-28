@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 1.0.1      |
+  |  © 2021-2024 By PusyuuWanko/  |
+  |  LastUpdate: 2024-10-13       |
+  |  License: Apache-2.0 license      |
+  |  PusyuuIPS....                |
+----------------------------------*
+******************************************/
+
+/* 広告のカスタマイズ設定
+---------------------------------------------*/
+
+.ads {
+  position: relative;
+  padding: 10px 15px 180px 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(128,128,128,0.5);
+}
+.ads > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.ads > div > .admax-ads {
+  margin: 10px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #0af;
+  transform: scale(1);
+  transition: all 0.3s;
+  width: 300px;
+  height: 250px;
+}
+.ads > div > .admax-ads:hover {
+  border: 1px solid #0f0;
+  transform: scale(0.9);
+}
+.ads::before {
+  position: absolute;
+  bottom: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  content: "寄付されたい方は広告をクリックするだけで寄付を可能です！！";
+  font-size: 20px;
+  color: #0f0;
+  text-shadow: 2px 2px 2px #777;
+}
+
+@media only screen and (max-width: 600px) {
+  .ads > div > .admax-ads {
+    width: 100%;
+  }
+}
