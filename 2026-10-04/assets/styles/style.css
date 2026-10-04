@@ -1,0 +1,1113 @@
+@charset "UTF-8";
+
+body {
+  padding: 0;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 4.19.7     |
+  |  © 2021-2026 By ISAMI ABE     |
+  |  LastUpdate: 2026-01-16       |
+  |  License: MIT License         |
+  |  PusyuuIPS....                |
+----------------------------------*
+******************************************/
+
+/* 装飾等設定
+---------------------------------------------*/
+
+.image_iconsize {
+  width: 35px;
+  height: 35px;
+}
+
+button,
+.button {
+  border-width: 0;
+  background: #00cccc;
+  box-shadow: 5px 5px #000;
+  transition: all 0.2s;
+  border-radius: 3px;
+  padding: 3px;
+  color: #000;
+  font-size: 13px;
+  text-decoration: none;
+}
+button:hover,
+.button:hover {
+  background: #00aacc;
+  box-shadow: 0px 0px;
+  color: #000;
+  text-decoration: none;
+}
+.button:visited {
+  color: #000;
+}
+
+.action_msg {
+  padding: 10px;
+  color: #00ff00;
+  text-shadow: 1px 2px #000;
+}
+
+@keyframes expand {
+  from {
+    transform: scale(0.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes border_anime {
+  0% {
+    border: 1px solid #ff8800;
+  }
+  30% {
+    border: 1px solid #ffaa00;
+  }
+  60% {
+    border: 1px solid #ffff00;
+  }
+  80% {
+    border: 1px solid #ff5500;
+  }
+  100% {
+    border: 1px solid #ff0000;
+  }
+}
+
+#loading {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to left bottom, rgba(0, 100, 255, 0.2), rgba(0, 255, 0, 0.2));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+#loading > div {
+  width: 80%;
+  height: auto;
+  background: #00ff00;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px #333;
+}
+#loading > div > h4 {
+  margin: 0;
+  padding: 10px;
+  border-bottom: 1px solid #00aaff;
+}
+#loading > div > div {
+  padding: 20px;
+}
+#loading > div > form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#loading > div > div > img {
+  width: 20px;
+  height: 20px;
+}
+#loading > div > div > span {
+  margin: 0 20px 0;
+}
+
+.bbs_content {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.bbs_content > .one_post {
+  width: 100%;
+  margin: 10px;
+  border-radius: 10px;
+  border: var(--page_base_border);
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: var(--page_base_yessbgcolor);
+}
+.bbs_content > .one_post > .title {
+  border-bottom: 1px solid #aaa;
+  background-color: var(--page_base_nosbgcolor);
+  padding: 10px;
+  word-break: break-all;
+  text-shadow: 1px 1px 1px #00ff00;
+}
+.bbs_content > .one_post > .content {
+  padding: 15px;
+  word-break: break-all;
+}
+.bbs_content > .one_post > .content > .media {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+}
+.bbs_content > .one_post > .content > .media > video,
+.bbs_content > .one_post > .content > .media > img {
+  margin: 5px 0px 5px;
+  border-radius: 5px;
+  border: 2px solid #777;
+}
+.bbs_content > .one_post > .buttons {
+  background-color: rgba(100,100,100,0.5);
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.bbs_content > .one_post > .buttons::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0,0,0,0.5);
+}
+.bbs_content > .one_post > .buttons::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+}
+.bbs_content > .one_post > .buttons > form > button {
+  background: #00ff00;
+  color: #000;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50px;
+  border-width: 0;
+  margin: 10px;
+  box-shadow: 2px 2px #000;
+  transition: all 0s;
+  display: flex;
+}
+.bbs_content > .one_post > .buttons > form > button > span {
+  margin: 3px;
+}
+.bbs_content > .one_post > .buttons > form > button:active {
+  background: #00cc00;
+  box-shadow: 0px 0px;
+}
+.bbs_content > .one_post > .buttons > form > button:disabled {
+  background: #ccffcc;
+  box-shadow: 0px 0px;
+  color: #ccc;
+  cursor: not-allowed;
+}
+/* 通知モーダルの「この端末で受け取る」ボタン(push.js が作ります)。処理中は disabled に
+   なるので、押せないことが一目で分かるようにグレーにします。ブラウザ既定の disabled は
+   文字が少し薄くなるだけで、押せるのか処理中なのか見分けられません。 */
+#pips-notification-settings button:disabled {
+  background: #ddd;
+  border-color: #bbb;
+  color: #888;
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+.bbs_content > .post {
+  position: relative;
+  width: 20vw;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: var(--page_base_yessbgcolor);
+  border: var(--page_base_border);
+  animation: border_anime 3s infinite;
+  border-radius: 10px;
+  margin: 5px;
+  overflow: hidden;
+}
+.bbs_content > .profile_header {
+  width: 100%;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: var(--page_base_yessbgcolor);
+  border: var(--page_base_border);
+  border-radius: 10px;
+  margin: 5px;
+  padding: 15px;
+}
+.bbs_content > .profile_header h2 {
+  margin: 0 0 5px 0;
+  text-shadow: 1px 1px 1px #00ff00;
+}
+.bbs_content > .profile_header .profile_avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.bbs_content > .profile_header .profile_avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.bbs_content > .profile_header .profile_bio {
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+/* ================================================================
+   引用カード（本文に貼られた「うちの投稿へのリンク」の展開先）
+   HTMLはPHPが作ります（PipsQuote::card()）。
+
+   【置かれる場所が狭いこと】一覧の投稿カード(.bbs_content > .post)は 20vw × 300px の
+   固定枠で overflow:hidden です。ここが伸びると、引用した本人の本文が枠の外へ押し出されて
+   読めなくなります。本文を3行で打ち切る指定と、字を小さくしている指定は外さないでください。
+
+   【色は固定値を書かず、半透明で重ねること】このページは明るい配色と暗い配色を
+   prefers-color-scheme で切り替えます(:root の変数群)。ここで #fff や #000 を直書きすると
+   片方の配色で沈むか飛ぶかします。下地には rgba(128,128,128,…) を重ね、差し色にだけ
+   このサイトのアクセント(#00cccc)を薄く使っています。どちらの配色でも成立します。
+   ================================================================ */
+.quote_post {
+  position: relative;
+  overflow: hidden;
+  margin: 8px 0;
+  padding: 9px 11px;
+  border: 1px solid rgba(128,128,128,0.35);
+  border-radius: 12px;
+  background-image: linear-gradient(135deg, rgba(0,204,204,0.10), rgba(128,128,128,0.06));
+  font-size: 12px;
+  line-height: 1.55;
+  word-break: break-all;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.quote_post:hover {
+  border-color: rgba(0,204,204,0.75);
+  box-shadow: 0 2px 12px rgba(0,204,204,0.22);
+}
+.quote_post > p {
+  margin: 0;
+}
+/* 右上に薄く敷く引用符。読む物ではないので、クリックも選択も邪魔しません。 */
+.quote_post_mark {
+  position: absolute;
+  top: -2px;
+  right: 6px;
+  font-size: 34px;
+  line-height: 1;
+  opacity: 0.13;
+  pointer-events: none;
+  user-select: none;
+}
+.quote_post_head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  padding-right: 24px; /* 引用符の下に件名が潜り込まないように空けます */
+}
+.quote_post_subject {
+  font-weight: 700;
+}
+.quote_post_user {
+  color: #00aaaa;
+  font-size: 11px;
+}
+.quote_post_name {
+  opacity: 0.7;
+  font-size: 11px;
+}
+.quote_post_body {
+  margin-top: 5px !important;
+  /* 3行で打ち切ります。対応しないブラウザでは普通に全文が出るだけで、壊れはしません。 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.quote_post_foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px !important;
+  font-size: 11px;
+}
+.quote_post_time {
+  opacity: 0.6;
+}
+.quote_post_chip {
+  padding: 0 7px;
+  border: 1px solid rgba(128,128,128,0.45);
+  border-radius: 999px;
+  opacity: 0.8;
+}
+/* 「開く」だけは押せる物なので、行の右端に寄せて輪郭を与えます。 */
+.quote_post_open {
+  margin-left: auto;
+  padding: 1px 10px;
+  border: 1px solid rgba(0,204,204,0.6);
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+.quote_post_open:hover {
+  background-color: rgba(0,204,204,0.2);
+  text-decoration: none;
+}
+@media (prefers-color-scheme: dark) {
+  .quote_post_user {
+    color: #33dddd;
+  }
+}
+
+/* 返信ボタン(⤴)に添える返信件数。
+   0件なら赤、1件以上なら青。どちらの印を付けるかはPHPが決めます
+   （PipsPostTemplate::shareButton()）。以前はこの色分けをJSがDOMContentLoadedで1回だけ
+   やっていたため、JSが無い環境では色が付かず、一覧を差し替えた後も塗り直されませんでした。
+   色は「返信が付いているか」という情報そのものなので、ここを消さないでください。
+   ボタンの地色は #00ff00 固定なので、明暗どちらの配色でもこの2色で読めます。 */
+.replyCD_none {
+  color: #ff0000;
+}
+.replyCD_has {
+  color: #0000ff;
+  text-shadow: 1px 1px #00aaff;
+}
+/* 感想スタンプの入り口(😊)に添える合計と、モーダルの中の並び(PipsPostTemplate::stampForms())。 */
+.stampCD {
+  margin: 3px;
+}
+/* 0なら緑、1以上ならオレンジ。どちらの印を付けるかはPHPが決めます(PipsPostTemplate::buttons())。
+   ボタンの地色が #00ff00 なので、明るい緑やオレンジだと数字が読めません。濃いめにしてあります。 */
+.stampCD_none {
+  color: #c05000;
+
+}
+.stampCD_has {
+  color: #006600;
+  font-weight: bold;
+}
+.stamp_list form {
+  display: inline-block;
+  margin: 3px;
+}
+.stamp_list button {
+  padding: 5px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+/* このセッションで押した種類。取り消しと選び直しができるのはこれだけです。 */
+.stamp_list .stamp_chosen {
+  outline: 2px solid #00aaff;
+  font-weight: bold;
+}
+
+.post_author_avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.user_list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+.user_list > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,255,0,0.2);
+}
+.user_list > li > a {
+  color: #00ff00;
+  text-decoration: none;
+}
+.bbs_content > .profile_header form {
+  display: inline-block;
+  margin-top: 10px;
+}
+.bbs_content > .post.to_reply {
+  width: 100% !important;
+  height: 80vh !important;
+}
+.bbs_content > .post > .wrapper {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transform: scale(0.1);
+  animation: expand 2s ease forwards;
+}
+.bbs_content > .post > .wrapper.wrre {
+  overflow-y: auto !important;
+}
+.bbs_content > .post > .wrapper > .title {
+  border-bottom: 1px solid #aaa;
+  padding: 5px;
+  background-color: var(--page_base_nosbgcolor);
+  word-break: break-all;
+  text-shadow: 1px 1px 1px #00ff00;
+}
+.bbs_content > .post > .wrapper > .content {
+  padding: 10px;
+  word-break: break-all;
+}
+.bbs_content > .post > .wrapper > .content > .media {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+}
+.bbs_content > .post > .wrapper > .content > .media > div {
+/* 基本の幅を40%程度に設定（余白を考慮して調整） */
+  flex-basis: 40%; 
+  /* 空いているスペースがあれば埋めるように広がる */
+  flex-grow: 1; 
+  /* 1つの時に広がりすぎないように、あるいは2つの時にバランスを保つため 
+  後にgrowとbasisについて勉強
+  */
+  max-width: 100%;
+  margin: 10px;
+}
+.bbs_content > .post > .wrapper > .content > .media > div > a > video,
+.bbs_content > .post > .wrapper > .content > .media > div > a > img {
+  border-radius: 3px;
+  border: 2px solid #777;
+}
+.bbs_content > .post > .buttons {
+  background-color:rgba(200,100,0,0.2);
+  box-shadow: inset 0px 0px 4px #ff8800;
+  display: flex;
+  flex-shrink: 0;
+  margin-top: auto;
+  justify-content: space-between;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.bbs_content > .post > .buttons::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(0,0,0,0.5);
+}
+.bbs_content > .post > .buttons::-webkit-scrollbar-thumb {
+  background-color: #00ff00;
+}
+.bbs_content > .post > .buttons > form > button {
+  background: #00ff00;
+  color: #000;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50px;
+  border-width: 0;
+  margin: 10px;
+  box-shadow: 2px 2px #000;
+  transition: all 0s;
+  display: flex;
+}
+.bbs_content > .post > .buttons > form > button > span {
+  margin: 3px;
+}
+.bbs_content > .post > .buttons > form > button:active {
+  background: #00cc00;
+  box-shadow: 0px 0px;
+}
+.bbs_content > .post > .buttons > form > button:disabled {
+  background: #ccffcc;
+  box-shadow: 0px 0px;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+#likeList {
+  width: 100%;
+  overflow-y: auto;
+}
+/* 「あなたのブックマーク」の1件(PipsPostTemplate::render($post, "bookmark"))。
+   投稿カードの見た目(.bbs_content > .post)は一覧の中でしか効かない書き方なので、
+   モーダルの中のこちらは別に持ちます。本文は抜粋なので高さは固定しません。 */
+#likeList > .bookmark {
+  text-align: left;
+  border: var(--page_base_border);
+  border-radius: 10px;
+  margin: 5px 0;
+  overflow: hidden;
+}
+#likeList > .bookmark > .wrapper {
+  cursor: pointer;
+}
+#likeList > .bookmark .title {
+  border-bottom: 1px solid #aaa;
+  padding: 5px;
+  background-color: var(--page_base_nosbgcolor);
+  word-break: break-all;
+}
+#likeList > .bookmark .content {
+  padding: 5px 10px;
+  word-break: break-all;
+}
+#likeList > .bookmark > .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  padding: 3px 5px;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: #ffffff;
+    color: #111;
+  }
+  h1 {
+    color: #005dff;
+  }
+  h2 {
+    background: -webkit-linear-gradient(left, #008cff, #00ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2:after {
+    content: "";
+    display: block;
+    width: 100%; height: 2px;
+    background-image: -webkit-linear-gradient(left, #008cff, #00ff00);
+    background-image: -ms-linear-gradient(left, #008cff, #00ff00);
+  }
+  h3 {
+   color: #0327cf;
+  }
+  h4 {
+    color: #1362ff;
+  }
+  h5 {
+    color: #035294;
+  }
+  strong {
+    color: #0700ac;
+  }
+  a {
+    color: #1f77ff;
+  }
+  a:hover {
+    color: #096709;
+    text-decoration: underline;
+  }
+  a:visited {
+    color: #1ba8c8;
+  }
+  summary {
+    color: #019156;
+  }
+  summary:active {
+    color: #00aacc;
+  }
+  smoll {
+    color: #424242;
+  }
+  nav > ul > li > a {
+    color: #111;
+  }
+  nav > ul > li > a:hover {
+    color: #00ff00;
+    border: 1px solid #00ff00;
+  }
+  .header {
+    background-color: rgba(255,255,255,0.9);
+  }
+  .footer {
+    background-color: #ffffff;
+  }
+  :root {
+    --page_base_yessbgcolor: rgba(255,255,255,0.5); 
+    --page_base_nosbgcolor: rgb(255,255,255); 
+    --page_base_border: 0.5px solid #333333;
+    --page_base_dcolor: color: #111;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000000;
+    color: #fff;
+  }
+  h1 {
+    color: #00ff7f;
+  }
+  h2 {
+    background: -webkit-linear-gradient(left, #00ffff, #00ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  h2:after {
+    content: "";
+    display: block;
+    width: 100%; height: 2px;
+    background-image: -webkit-linear-gradient(left, #00ffff, #00ff00);
+    background-image: -ms-linear-gradient(left, #00ffff, #00ff00);
+  }
+  h3 {
+   color: #80ff00;
+  }
+  h4 {
+    color: #6699ff;
+  }
+  h5 {
+    color: #41e0e0;
+  }
+  strong {
+    color: #d5ff00;
+  }
+  a {
+    color: #00d5ff;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #0ae10a;
+    text-decoration: underline;
+  }
+  a:visited {
+    color: #00ffb7;
+  }
+  summary {
+    color: #02d780;
+  }
+  summary:active {
+    color: #00aacc;
+  }
+  smoll {
+    color: #ccc;
+  }
+  nav > ul > li > a {
+    color: #fff;
+  }
+  nav > ul > li > a:hover {
+    color: #00ff00;
+    border: 1px solid #00ff00;
+  }
+  .header {
+    background-color: rgba(0,0,0,0.9);
+  }
+  .footer {
+    background-color: #000000;
+  }
+  :root {
+    --page_base_yessbgcolor: rgba(0,0,0,0.1);
+    --page_base_nosbgcolor: rgb(0,0,0);
+    --page_base_border: 0.5px solid #FFFFFF;
+    --page_base_dcolor: color: #fff;
+  }
+}
+
+/* ヘッダー設定
+---------------------------------------------*/
+
+.header {
+  /* <header>はHTML5の要素で、古いブラウザは既定でinline扱いにしてしまう
+     （widthやpaddingが効かなくなる）ため、明示しておきます。 */
+  display: block;
+  background-color: var(--page_base_nosbgcolor);
+  padding: 10px;
+  width: 60%;
+  border-radius: 0px 20px 20px 0px;
+  border: var(--page_base_border); 
+  border-left: 0px solid;
+  margin: 25px 0px 10px;
+}
+.header > h1,
+.header > p,
+.header > p > span {
+  word-break: break-all;
+}
+.header > h1 {
+  margin: 0;
+}
+.header > p {
+  color: #00aaff;
+}
+.header > p > span {
+  color: #ff8800;
+}
+
+/* メイン設定
+---------------------------------------------*/
+
+.main {
+  display: block;
+  min-height: 70vh;
+}
+
+/* フッター設定
+---------------------------------------------*/
+
+.footer {
+  /* <footer>はHTML5の要素なので、flexを理解しない古いブラウザでも最低限
+     ブロック表示になるよう先に書いておきます（flex宣言はそちらが
+     上書きします）。 */
+  display: block;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-top: var(--page_base_border);
+}
+.footer > div {
+  width: 300px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  
+  word-break: break-all;
+}
+.footer > div > li {
+  list-style: none;
+}
+.footer > div > small {
+  padding: 10px;
+}
+/* フッターの「軽量版で見る」だけは、リンクではなくボタン(POST)です。
+   理由はindex.phpの該当箇所のコメントを読んでください（クローラーはリンクを辿るがフォームは
+   送信しない、という性質を使って軽量版へ迷い込ませないためです）。
+   ここは周りの<p>と縦の間隔を揃えるためだけの指定で、ボタン自体の見た目は共通の.buttonです。 */
+.footer > div > .lite_switch {
+  margin: 1em 0;
+}
+/* <button>はブラウザ既定のフォントを使うため、指定しないとここだけ書体が変わります
+   （.buttonはリンク用に作られた指定で、font-familyを持っていません）。 */
+.footer > div > .lite_switch > button {
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* フォーム設定
+-----------------------------------------------------------------*/
+
+.form_style-1 {
+  padding: 10px;
+}
+.form_style-1 > form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.form_style-1 > form > label {
+  padding: 3px;
+  border-left: 3px solid #ccc;
+  border-right: 3px solid #ccc;
+  background-color: var(--page_base_yessbgcolor);
+}
+.form_style-1 > form > textarea,
+.form_style-1 > form > input,
+.form_style-1 > form > select,
+.form_style-1 > form > button {
+  border-radius: 0;
+  border-width: 0;
+  border: var(--page_base_border);
+  background: #fff;
+  color: #000;
+  margin: 5px;
+  padding: 3px;
+}
+.form_style-1 > form > textarea {
+  resize: vertical;
+  height: 150px;
+}
+.form_style-1 > form > button {
+  background: #00ccff;
+  transition: all 0.3s;
+}
+.form_style-1 > form > button:hover {
+  background: #00aaff;
+  box-shadow: 0px 0px 0px #000;
+}
+
+/* ボタン設定
+---------------------------------------------*/
+
+.bottom-right_button,
+.bottom-left_button,
+.top-left_button,
+.top-right_button {
+  position: fixed;
+  width: 100px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(10,255,10,0.7);
+  border-radius: 50px;
+  padding: 10px;
+  z-index: 1;
+}
+.bottom-right_button {
+  bottom: 10px;
+  right: 10px;
+}
+.bottom-left_button {
+  bottom: 10px;
+  left: 10px;
+}
+.top-left_button {
+  top: 10px;
+  left: 10px;
+}
+.top-right_button {
+  top: 10px;
+  right: 10px;
+}
+
+/* モーダル設定
+---------------------------------------------*/
+
+.modal {
+  display: none;
+  z-index: 666;
+}
+.modal:target {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal > div {
+  animation: modal-show 0.3s linear 0s;
+}
+@keyframes modal-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal > div > a {
+  position: relative;
+  display: block;
+}
+.modal > div > a::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  background-color: rgba(0,0,0,0.4);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.modal > div > a::after {
+  content: "✕";
+  color: white;
+  position: absolute;
+  right: -13px;
+  top: -13px;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  border-radius: 50px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.modal > div > div {
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #333333;
+  box-shadow: 0px -1px 1px #aaa;
+}
+.modal > div > div > div,
+.modal > div > div > span {
+  position: relative;
+  width: 70vw;
+}
+.modal > div > div > span {
+  min-height: 20px;
+  font-size: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #00ccff;
+  color: #00ccff;
+  word-break: break-all;
+}
+.modal > div > div > div {
+  height: 50vh;
+  border-radius: 0px;
+  overflow: hidden;
+  cursor: default;
+  padding: 15px;
+  overflow: auto;
+  color: #fff;
+}
+
+/* sm tb設定
+---------------------------------------------*/
+
+@media screen and ( max-width:950px ) {
+  .bbs_content > .post {
+    width: 37vw;
+    position: sticky;
+    top: 5%;
+  }
+  .top-left_button,.top-right_button,.bottom-left_button,.bottom-right_button {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+}
+
+/* sm設定
+---------------------------------------------*/
+
+@media screen and ( max-width:650px ) {
+  .bbs_content > .post {
+    width: 80vw;
+  }
+  
+  /* sm ヘッダー設定
+  ---------------------------------------------*/
+
+  .main {
+
+  }
+  
+  /* sm メイン設定
+  ---------------------------------------------*/
+
+  .header {
+    width: auto;
+    border-radius: 0px;
+    border-right: 0px solid;
+  }
+  
+  /* sm フッター設定
+  ---------------------------------------------*/
+
+  .footer > div {
+    width: 90%;
+  }
+}
+
+/* ================================================================
+   書き込みフォームの先頭に出すカード（今から何を投稿するのか）
+   HTMLはPHPが作ります（PipsPostTemplate::composerHeader()）。
+   新規投稿・返信・返信先が消えた場合の3種類あり、左端の色帯で見分けます。
+   ================================================================ */
+.composer_head {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 10px 12px;
+  margin: 0 0 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 4px solid #888;
+}
+.composer_head-new   { border-left-color: #00c46a; }
+.composer_head-reply { border-left-color: #00aaff; }
+.composer_head-lost  { border-left-color: #ffaa00; }
+
+.composer_avatar {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.composer_avatar-anon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.composer_head_body { min-width: 0; flex: 1; }
+.composer_head_body p { margin: 0 0 2px; }
+
+.composer_head_who     { font-weight: bold; }
+.composer_head_subject { font-size: 0.9em; opacity: 0.9; overflow-wrap: anywhere; }
+.composer_head_excerpt { font-size: 0.85em; opacity: 0.7; overflow-wrap: anywhere; }
+.composer_head_state   { font-size: 0.85em; margin-top: 4px; }
+.composer_mark         { margin-right: 3px; }
+
+/* ================================================================
+   新着のお知らせ（押されるまで一覧は差し替えません）
+   中身はJSが入れます。JSが無ければ最後まで空のままです。
+   ================================================================ */
+.new_posts_notice { text-align: center; margin: 8px 0; }
+.new_posts_notice button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #00aaff;
+  color: #fff;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.new_posts_notice button:hover { background: #0088cc; }
+
+/* 編集モーダルの添付欄（PipsPostTemplate::editMediaFields()） */
+.edit_media { text-align: left; margin: 8px 0; }
+.edit_media_title { font-size: 0.9em; opacity: 0.85; margin: 0 0 4px; }
+.edit_media_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 8px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.07);
+}
+.edit_media_row .edit_media_thumb { font-size: 0.85em; }
+.edit_media_remove, .edit_media_replace, .edit_media_add { font-size: 0.85em; }
+.edit_media_add { display: block; margin-top: 8px; }
+.edit_media_note { font-size: 0.8em; opacity: 0.7; margin: 4px 0 0; }
+
+/* 下書き（PHPが保持し、JSは自動で呼ぶだけ） */
+.draft_state { font-size: 0.8em; opacity: 0.75; margin: 6px 0 4px; }
+.draft_buttons { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
+.draft_buttons button { font-size: 0.85em; padding: 5px 12px; }
+
+/* 状態を取得している間の表示（PipsComposer.showPending） */
+.composer_pending {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  margin: 0 0 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 4px solid #888;
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+.composer_pending_mark { width: 16px; height: 16px; }
+
+/* 返信先を取得している間の送信ボタン（PipsComposer.setSendBusy） */
+.form_style-1 button[name="postSend"]:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}

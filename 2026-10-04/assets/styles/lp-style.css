@@ -1,0 +1,633 @@
+@charset "UTF-8";
+
+/*****************************************
+  *----------------------------------
+  |  ThisStyleVersion: 2.0.0      |
+  |  © 2021-2026 By PusyuuWanko/  |
+  |  LastUpdate: 2026-07-23       |
+  |  License: MIT License         |
+  |  PIPS of LP... (frog / near-future)
+----------------------------------*
+******************************************/
+
+:root {
+  --bg-0: #030907;
+  --bg-1: #061a10;
+  --bg-2: #08251a;
+  --frog: #39ff8f;
+  --frog-dim: #1c8f57;
+  --cyan: #2be7ff;
+  --ink: #eafff2;
+  --ink-dim: #9fd9bb;
+  --danger: #ff4d6d;
+  --warn: #ffe066;
+  --glass: rgba(6, 28, 19, 0.55);
+  --glass-strong: rgba(3, 14, 9, 0.82);
+  --border-glow: rgba(57, 255, 143, 0.45);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-0);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(57, 255, 143, 0.10), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(43, 231, 255, 0.10), transparent 45%),
+    repeating-linear-gradient(0deg, rgba(57, 255, 143, 0.035) 0px, rgba(57, 255, 143, 0.035) 1px, transparent 1px, transparent 26px),
+    repeating-linear-gradient(90deg, rgba(57, 255, 143, 0.035) 0px, rgba(57, 255, 143, 0.035) 1px, transparent 1px, transparent 26px);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  line-height: 1.75;
+}
+
+::selection {
+  background: var(--frog);
+  color: #001a0e;
+}
+
+/* 見出し類・共通の発光テキスト
+---------------------------------------------*/
+
+h2 {
+  display: inline-block;
+  color: var(--frog);
+  text-shadow: 0 0 6px rgba(57, 255, 143, 0.55), 0 0 18px rgba(57, 255, 143, 0.25);
+  letter-spacing: 0.04em;
+}
+h2::before {
+  content: "🐸";
+  margin-right: 8px;
+  filter: drop-shadow(0 0 6px rgba(57, 255, 143, 0.6));
+}
+h3 {
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(43, 231, 255, 0.4);
+}
+h4 {
+  color: var(--warn);
+}
+
+show {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  background: var(--bg-0);
+}
+show > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  filter: blur(10px) saturate(1.1) brightness(0.55);
+}
+show > div {
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+  top: 10%;
+  width: 50%;
+  background: var(--glass);
+  border: 1px solid var(--border-glow);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(57, 255, 143, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: auto;
+  animation: panel-glow 4s ease-in-out infinite;
+}
+show > div h2 {
+  font-size: 1.6em;
+}
+show > div p {
+  color: var(--ink-dim);
+}
+
+@keyframes panel-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(57, 255, 143, 0.20), inset 0 0 30px rgba(0, 0, 0, 0.4); }
+  50%      { box-shadow: 0 0 32px rgba(57, 255, 143, 0.40), inset 0 0 30px rgba(0, 0, 0, 0.4); }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 10px;
+  background: linear-gradient(180deg, rgba(3, 12, 8, 0.95), rgba(3, 12, 8, 0.85));
+  border-bottom: 1px solid var(--border-glow);
+  box-shadow: 0 2px 20px rgba(57, 255, 143, 0.15);
+  height: 75px;
+  width: auto;
+  box-sizing: border-box;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+header > h1 {
+  width: 100px;
+  height: 50px;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+header > h1 > img {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 6px rgba(57, 255, 143, 0.55));
+  animation: logo-blink 5s ease-in-out infinite;
+}
+@keyframes logo-blink {
+  0%, 92%, 100% { filter: drop-shadow(0 0 6px rgba(57, 255, 143, 0.55)); }
+  95%           { filter: drop-shadow(0 0 2px rgba(57, 255, 143, 0.2)) brightness(0.8); }
+}
+
+nav > ul {
+  display: flex;
+  margin: 0;
+}
+nav > ul > li {
+  list-style: none;
+  margin: 5px;
+}
+nav > ul > li > a {
+  color: var(--frog);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.5s;
+  text-shadow: 0 0 4px rgba(57, 255, 143, 0.4);
+}
+nav > ul > li > a::before,
+nav > ul > li > a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  transition: all 0.5s;
+  bottom: -5px;
+  box-shadow: 0 0 6px var(--cyan);
+}
+nav > ul > li > a::before {
+  right: 50%;
+  background: var(--frog-dim);
+}
+nav > ul > li > a::after {
+  left: 50%;
+  background: var(--cyan);
+}
+nav > ul > li > a:hover {
+  color: var(--cyan);
+}
+nav > ul > li > a:hover::before {
+  content: "";
+  width: 50%;
+}
+nav > ul > li > a:hover::after {
+  content: "";
+  width: 50%;
+}
+
+main {
+  padding: 10px 20px 10px;
+}
+main a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+main a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(43, 231, 255, 0.6);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #010603;
+  color: var(--frog);
+  border-top: 1px solid var(--border-glow);
+}
+
+section {
+  padding: 70px 20px 0px 20px;
+}
+
+section > article {
+  background: var(--glass);
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin: 24px 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+section > article:hover {
+  box-shadow: 0 0 24px rgba(57, 255, 143, 0.25);
+  transform: translateY(-2px);
+}
+section > article ul {
+  color: var(--ink-dim);
+}
+section > article ul li {
+  margin: 6px 0;
+}
+
+.q_and_a {
+  padding-left: 0;
+}
+.q_and_a > li {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0px 15px;
+  padding: 12px 16px;
+  background: var(--glass);
+  border: 1px solid rgba(57, 255, 143, 0.22);
+  border-left: 3px solid var(--frog);
+  border-radius: 8px;
+}
+.q_and_a > li > strong::before {
+  content: "Q";
+  padding: 0px 10px 0px;
+  color: var(--danger);
+  text-shadow: 0 0 6px rgba(255, 77, 109, 0.5);
+}
+.q_and_a > li > span::before {
+  content: "A ";
+  padding: 0px 10px 0px;
+  color: var(--frog);
+  text-shadow: 0 0 6px rgba(57, 255, 143, 0.5);
+}
+.q_and_a > li > span {
+  color: var(--ink-dim);
+  margin-top: 6px;
+}
+
+.future_button {
+  width: 50vw;
+  height: 30vh;
+  border: 1px solid var(--border-glow);
+  background: linear-gradient(135deg, var(--frog-dim), var(--cyan));
+  background-size: 220% 220%;
+  animation: gradient-shift 6s ease-in-out infinite, pulse-glow 3s ease-in-out infinite;
+  transition: all 0.3s;
+  border-radius: 16px;
+  padding: 10px;
+}
+.future_button:hover {
+  width: 52vw;
+  height: 32vh;
+  display: flex;
+  background: linear-gradient(135deg, var(--frog), var(--cyan));
+  background-size: 220% 220%;
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(57, 255, 143, 0.35); }
+  50%      { box-shadow: 0 0 26px rgba(57, 255, 143, 0.6), 0 0 40px rgba(43, 231, 255, 0.3); }
+}
+.future_button > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: #04150c;
+  font-weight: bold;
+  font-size: 40px;
+  text-decoration: none;
+  text-shadow: none;
+}
+.future_button > a:hover {
+  text-decoration: none;
+  color: #001a0e;
+}
+
+.futures {
+
+}
+.futures video,
+.futures img {
+  width: 60%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 0 16px rgba(57, 255, 143, 0.15);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* モーダル設定
+---------------------------------------------*/
+
+.modal {
+  display: none;
+  z-index: 666;
+}
+.modal:target {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal > div {
+  animation: modal-show 0.3s linear 0s;
+  --modal_width: 60vw;
+  --modal_position: relative;
+}
+@keyframes modal-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal > div > a {
+  position: relative;
+  display: block;
+}
+.modal > div > a::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  background-color: rgba(0, 10, 6, 0.7);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.modal > div > a::after {
+  content: "✕";
+  color: var(--bg-0);
+  position: absolute;
+  right: -13px;
+  top: -13px;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  border-radius: 50px;
+  background-color: var(--frog);
+  box-shadow: 0 0 10px rgba(57, 255, 143, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.modal > div > div {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 0 30px rgba(57, 255, 143, 0.25);
+  background: var(--glass-strong);
+}
+.modal > div > div > span {
+  position: var(--modal_position);
+  width: var(--modal_width);
+  min-height: 20px;
+  font-size: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid var(--cyan);
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(43, 231, 255, 0.4);
+  word-break: break-all;
+  background: rgba(6, 40, 26, 0.6);
+}
+.modal > div > div > div {
+  position: var(--modal_position);
+  width: var(--modal_width);
+  height: 50vh;
+  border-radius: 0px;
+  overflow: hidden;
+  cursor: default;
+  padding: 15px;
+  overflow: auto;
+  color: var(--ink);
+}
+
+/* フォーム調整部
+-----------------------------------------------------------------*/
+
+.form_design-1 {
+  border: 1px solid var(--border-glow);
+  border-radius: 12px;
+  padding: 14px;
+  width: 90%;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: var(--glass);
+  box-shadow: 0 0 20px rgba(57, 255, 143, 0.12);
+}
+.form_design-1 > form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.form_design-1 > form > label {
+  padding: 3px;
+  border-left: 3px solid var(--frog);
+  border-right: 3px solid var(--cyan);
+  background-color: rgba(0, 0, 0, 0.35);
+  color: var(--ink);
+}
+.form_design-1 > form > textarea,
+.form_design-1 > form > input,
+.form_design-1 > form > select,
+.form_design-1 > form > button {
+  resize: vertical;
+  border-radius: 4px;
+  border-width: 0;
+  border: 1px solid rgba(57, 255, 143, 0.35);
+  background: #0a1f15;
+  color: var(--ink);
+  margin: 5px;
+  padding: 6px;
+}
+.form_design-1 > form > textarea {
+  resize: vertical;
+  height: 150px;
+}
+.form_design-1 > form > button {
+  background: var(--frog);
+  color: #001a0e;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 0 10px rgba(57, 255, 143, 0.3);
+}
+.form_design-1 > form > button:hover {
+  background: var(--cyan);
+  box-shadow: 0 0 16px rgba(43, 231, 255, 0.5);
+}
+
+@media only screen and (max-width: 600px) {
+
+  /* sm tb版 CSSだけでモーダル型ハンバーガーメニュー調整部
+  -----------------------------------------------------------------*/
+
+  .modal_menu-btn::before {
+    content: "🐸";
+    z-index: 50;
+  }
+
+  .modal_menu-btn::before,
+  #modal_ham_nav > div > a::after {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: var(--frog);
+    box-shadow: 0 0 14px rgba(57, 255, 143, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    animation: h-show 0.2s linear;
+  }
+
+  #modal_ham_nav {
+    display: none;
+  }
+
+  #modal_ham_nav:target {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50vh;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #modal_ham_nav > div {
+    z-index: 250;
+    position: relative;
+  }
+
+  #modal_ham_nav > div > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--glass-strong);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    cursor: default;
+    width: 80vw;
+    height: 70vh;
+    height: 70dvh;
+    border: 1px solid var(--border-glow);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(57, 255, 143, 0.25);
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    animation: h-show 0.3s linear 0s;
+    z-index: 201;
+  }
+ #modal_ham_nav > div > div::before {
+   content: "メニュー🐸";
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 10px;
+   border-radius: 0px 0px 30px 0px;
+   background-color: var(--frog);
+   color: #001a0e;
+   font-weight: bold;
+  }
+
+  @keyframes h-show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  #modal_ham_nav > div > div > nav {
+    width: 100%;
+  }
+
+  #modal_ham_nav > div > div > nav > ul {
+    display: block;
+    padding-left: 0;
+  }
+
+  #modal_ham_nav > div > div > nav > ul > li {
+    min-width: 20px;
+  }
+
+  #modal_ham_nav > div > div > nav > ul > li > a {
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  #modal_ham_nav > div > a {
+    position: absolute;
+    display: block;
+  }
+
+  #modal_ham_nav > div > a::before {
+    content: "";
+    background-color: rgba(0, 10, 6, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    width: 100dvw;
+    height: 100vh;
+    height: 100dvh;
+    cursor: default;
+    transition: all 1s ease-in-out;
+    z-index: 200;
+  }
+  #modal_ham_nav > div > a::after {
+    content: "❌";
+    z-index: 260;
+  }
+}
